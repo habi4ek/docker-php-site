@@ -5,15 +5,15 @@ RUN docker-php-ext-install mysqli
 # apache config
 COPY apacheConf/apache2.conf /etc/apache2/
 
-# site config
+# sites config
 COPY apacheConf/mysite.com.conf /etc/apache2/sites-available/
 COPY apacheConf/mysite.com.ssl.conf /etc/apache2/sites-available/
 
 RUN a2enmod expires headers rewrite ssl
 
-# enable site
+# enabled sites
 RUN a2ensite mysite.com.conf
-RUN a2ensite mysite.com.ssl.conf
+# RUN a2ensite mysite.com.ssl.conf
 
 RUN apt-get update \
  && apt-get install -y cron mc \
@@ -21,6 +21,6 @@ RUN apt-get update \
  && rm -r /var/lib/apt/lists/* \
  && rm -rf /tmp/*
 
-# if you need tasks scheduler
-COPY cron /etc/cron.d/cron
-RUN crontab /etc/cron.d/cron
+# if you need tasks scheduler you should open next 2 lines
+# COPY cron /etc/cron.d/cron
+# RUN crontab /etc/cron.d/cron
