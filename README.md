@@ -30,3 +30,8 @@ run the command to start the project "**docker-compose up -d**"
 - get a pair of keys for your site using "Let's Encrypt" or similar service
 - replace the keys in the "/src/mysite.com/ssl" folder
 - remove the "#" character in the line "# RUN a2ensite mysite.com.ssl.conf" in the Dockerfile
+
+### To check this site on the local computer. You must add a new rule to the hosts file on this computer.
+
+- `127.0.0.1 mysite.com` this string should be added into `/etc/hosts` file
+- open page `mysite.com` in your browser
